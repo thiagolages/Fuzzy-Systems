@@ -1,0 +1,41 @@
+[System]
+Name='exc4_tipping_sugeno'
+Type='sugeno'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=3
+AndMethod='prod'
+OrMethod='probor'
+ImpMethod='prod'
+AggMethod='sum'
+DefuzzMethod='wtaver'
+
+[Input1]
+Name='servico'
+Range=[0 10]
+NumMFs=3
+MF1='Ruim':'trapmf',[-1 0 4 5]
+MF2='Bom':'trapmf',[3 4 7 8]
+MF3='Excelente':'trapmf',[7 8 10 11]
+
+[Input2]
+Name='comida'
+Range=[0 10]
+NumMFs=3
+MF1='MaQualidade':'trapmf',[-1 0 4 5]
+MF2='Boa':'trapmf',[4 5 7 8]
+MF3='Deliciosa':'trapmf',[7 8 10 11]
+
+[Output1]
+Name='Gorjeta'
+Range=[0 1]
+NumMFs=3
+MF1='Pequena':'linear',[0.6 0.6 0]
+MF2='Média':'linear',[-60.3077 8 0]
+MF3='Generosa':'constant',[0.25]
+
+[Rules]
+1 1, 1 (1) : 2
+2 0, 2 (1) : 2
+3 3, 3 (1) : 2
